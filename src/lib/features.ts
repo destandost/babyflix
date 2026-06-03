@@ -13,7 +13,7 @@ export const LEARNING_MODULES: LearningModule[] = [
   {
     id: "language",
     title: "Language",
-    description: "Words, sounds, and new languages.",
+    description: "Choose any language — 28+ options or type your own.",
     emoji: "🗣️",
     color: "from-violet-400 to-purple-500",
   },
@@ -27,7 +27,7 @@ export const LEARNING_MODULES: LearningModule[] = [
   {
     id: "social-skills",
     title: "Social Skills",
-    description: "Sharing, feelings, and friendship.",
+    description: "Feelings, sharing, listening, and kind words.",
     emoji: "🤝",
     color: "from-emerald-400 to-green-500",
   },
@@ -41,7 +41,7 @@ export const LEARNING_MODULES: LearningModule[] = [
   {
     id: "motor-skills",
     title: "Motor Skills",
-    description: "Movement, coordination, and balance.",
+    description: "Balance, finger control, and body coordination.",
     emoji: "🏃",
     color: "from-lime-400 to-green-500",
   },
@@ -57,15 +57,15 @@ export const HOME_SECTIONS = [
   },
   {
     href: "/games",
-    title: "Games",
-    description: "Play math, language, arts, and motor games.",
-    emoji: "🎮",
-    color: "from-fuchsia-400 to-pink-600",
+    title: "Arcade",
+    description: "Tap, trace, catch, and paint — play for fun.",
+    emoji: "🧸",
+    color: "from-pink-300 to-orange-300",
   },
   {
     href: "/learn",
     title: "Learn",
-    description: "Structured lessons across every module.",
+    description: "Lessons, activities, and quizzes — earn XP.",
     emoji: "📚",
     color: "from-cyan-400 to-teal-600",
   },

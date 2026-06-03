@@ -1,4 +1,5 @@
 import { FeatureCard } from "@/components/FeatureCard";
+import { HomeLanguageBanner } from "@/components/language/HomeLanguageBanner";
 import { PageShell } from "@/components/PageShell";
 import { HOME_SECTIONS } from "@/lib/features";
 
@@ -17,6 +18,8 @@ export default function HomePage() {
           fun below!
         </p>
       </section>
+
+      <HomeLanguageBanner />
 
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
         {HOME_SECTIONS.map((section) => (

@@ -6,8 +6,6 @@ export type LearningModuleId =
   | "arts"
   | "motor-skills";
 
-export type GameCategoryId = LearningModuleId;
-
 export interface LearningModule {
   id: LearningModuleId;
   title: string;

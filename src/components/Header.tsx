@@ -3,7 +3,7 @@ import { APP_NAME } from "@/lib/features";
 
 const NAV_LINKS = [
   { href: "/shows", label: "Shows" },
-  { href: "/games", label: "Games" },
+  { href: "/games", label: "Arcade" },
   { href: "/learn", label: "Learn" },
   { href: "/leaderboard", label: "Rank" },
   { href: "/parents", label: "Parents" },

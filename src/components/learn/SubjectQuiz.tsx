@@ -154,7 +154,7 @@ export function SubjectQuiz({ quiz, moduleTitle, moduleEmoji }: SubjectQuizProps
             <button
               type="button"
               onClick={() => pick(opt.id)}
-              className="flex w-full items-center gap-3 rounded-2xl bg-gradient-to-r from-violet-50 to-teal-50 px-5 py-4 text-left font-display text-lg font-bold text-violet-900 shadow-sm transition hover:scale-[1.02] hover:ring-4 hover:ring-teal-200 active:scale-[0.99]"
+              className="flex w-full items-center gap-3 rounded-[18px] border-[2.5px] border-[#E8E8F4] bg-white px-5 py-4 text-left font-display text-lg text-brand-text transition-all hover:border-brand-purple hover:bg-brand-purple/5 active:scale-[0.97]"
             >
               {opt.emoji && <span className="text-3xl">{opt.emoji}</span>}
               <span>{opt.label}</span>

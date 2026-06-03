@@ -34,8 +34,14 @@ export function HomeLanguageBanner() {
   if (!mounted || !label) return null;
 
   return (
-    <section className="mb-8 overflow-hidden rounded-3xl bg-gradient-to-r from-violet-500 via-fuchsia-500 to-indigo-500 p-1 shadow-lg">
-      <div className="rounded-[1.35rem] bg-white/95 px-5 py-5 sm:px-6 sm:py-6">
+    <section
+      className="mx-4 mb-6 overflow-hidden rounded-4xl p-1"
+      style={{
+        background: "linear-gradient(135deg, #7B4FFF, #FF4D8D)",
+        boxShadow: "0 8px 32px rgba(123,79,255,0.3)",
+      }}
+    >
+      <div className="rounded-[1.35rem] bg-white px-5 py-5">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-4">
             <span

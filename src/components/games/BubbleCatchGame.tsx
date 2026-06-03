@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { GameButton } from "@/components/games/GameButton";
 import { randomFrom } from "@/lib/playful-reactions";
 import { speakGame } from "@/lib/speech";
@@ -95,17 +94,18 @@ export function BubbleCatchGame() {
   };
 
   return (
-    <div className="overflow-hidden rounded-[2rem] bg-white shadow-xl ring-4 ring-sky-200">
-      <div className="flex justify-between bg-gradient-to-r from-sky-200 to-cyan-200 px-4 py-3">
+    <div className="overflow-hidden rounded-4xl bg-white shadow-teal ring-2 ring-brand-border">
+      <div
+        className="flex justify-between px-4 py-3"
+        style={{ background: "linear-gradient(135deg, #00D4FF, #00C9B1)" }}
+      >
         <div>
           <p className="font-display text-lg font-extrabold text-sky-900">🫧 Bubble Catch</p>
           <p className="text-xs font-bold text-sky-700">
             Caught {caught} · Missed {missed}
           </p>
         </div>
-        <Link href="/games" className="rounded-full bg-white px-3 py-1 text-xs font-bold text-sky-700">
-          Arcade
-        </Link>
+        <span className="coin-badge text-xs">🪙 Fun</span>
       </div>
 
       <p className="bg-sky-50 py-2 text-center font-display text-sm font-bold text-sky-800">

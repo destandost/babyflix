@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { Character } from "@/components/characters/Characters";
 import { GameButton } from "@/components/games/GameButton";
 import { randomFrom } from "@/lib/playful-reactions";
 import { speakGame } from "@/lib/speech";
@@ -119,8 +119,11 @@ export function FrogPondGame() {
   };
 
   return (
-    <div className="overflow-hidden rounded-[2rem] bg-white shadow-xl ring-4 ring-lime-200">
-      <div className="flex items-center justify-between bg-gradient-to-r from-lime-200 to-emerald-200 px-4 py-3">
+    <div className="overflow-hidden rounded-4xl bg-white shadow-teal ring-2 ring-brand-border">
+      <div
+        className="flex items-center justify-between px-4 py-3"
+        style={{ background: "linear-gradient(135deg, #2ECC71, #00C9B1)" }}
+      >
         <div>
           <p className="font-display text-lg font-extrabold text-emerald-900">
             🐸 Frog Pond
@@ -129,12 +132,7 @@ export function FrogPondGame() {
             Caught {caught} · Combo ×{combo}
           </p>
         </div>
-        <Link
-          href="/games"
-          className="rounded-full bg-white px-3 py-1 text-xs font-bold text-emerald-700 shadow"
-        >
-          Arcade
-        </Link>
+        <span className="coin-badge text-xs">🪙 Fun</span>
       </div>
 
       <p className="bg-lime-50 py-2 text-center font-display text-sm font-bold text-lime-800">
@@ -193,9 +191,7 @@ export function FrogPondGame() {
           } ${munching ? "animate-pulse" : ""}`}
           style={{ left: `${FROG_X}%`, top: `${FROG_Y}%` }}
         >
-          <span className="block text-7xl drop-shadow-lg sm:text-8xl" aria-hidden>
-            {munching ? "😋" : "🐸"}
-          </span>
+          <Character id="dragon" size={munching ? 88 : 80} className="drop-shadow-lg" />
         </div>
       </div>
 

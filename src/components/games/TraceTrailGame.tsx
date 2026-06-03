@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { GameButton } from "@/components/games/GameButton";
 import { speakGame } from "@/lib/speech";
 
@@ -175,17 +174,18 @@ export function TraceTrailGame() {
   };
 
   return (
-    <div className="overflow-hidden rounded-[2rem] bg-white shadow-xl ring-4 ring-lime-200">
-      <div className="flex justify-between bg-gradient-to-r from-lime-200 to-emerald-200 px-4 py-3">
+    <div className="overflow-hidden rounded-4xl bg-white shadow-teal ring-2 ring-brand-border">
+      <div
+        className="flex justify-between px-4 py-3"
+        style={{ background: "linear-gradient(135deg, #00C9B1, #2ECC71)" }}
+      >
         <div>
           <p className="font-display text-lg font-extrabold text-lime-900">✏️ Trace Trail</p>
           <p className="text-xs font-bold text-lime-800">
             {trail.name} · ⭐ {stars} · {Math.round(progress)}%
           </p>
         </div>
-        <Link href="/games" className="rounded-full bg-white px-3 py-1 text-xs font-bold text-lime-800">
-          Arcade
-        </Link>
+        <span className="coin-badge text-xs">🪙 Fun</span>
       </div>
 
       <p className="bg-lime-50 py-2 text-center font-display text-sm font-bold text-lime-800">

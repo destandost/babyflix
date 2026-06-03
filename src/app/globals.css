@@ -1,23 +1,26 @@
 @import "tailwindcss";
-
-:root {
-  --background: #f5f3ff;
-  --foreground: #3b0764;
-}
+@import "../styles/tokens.css";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--off);
+  --color-foreground: var(--text);
   --font-sans: var(--font-nunito);
   --font-display: var(--font-fredoka);
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-nunito), system-ui, sans-serif;
-}
-
-.font-display {
-  font-family: var(--font-fredoka), var(--font-nunito), system-ui, sans-serif;
+  --color-brand-pink: #ff4d8d;
+  --color-brand-coral: #ff6b4a;
+  --color-brand-yellow: #ffd600;
+  --color-brand-teal: #00c9b1;
+  --color-brand-purple: #7b4fff;
+  --color-brand-cyan: #00d4ff;
+  --color-brand-green: #2ecc71;
+  --color-brand-off: #f7f7ff;
+  --color-brand-text: #2d2d44;
+  --color-brand-muted: #8888aa;
+  --color-brand-border: #f0f0f8;
+  --radius-3xl: 22px;
+  --radius-4xl: 28px;
+  --shadow-pink: 0 6px 20px rgba(255, 77, 141, 0.3);
+  --shadow-purple: 0 8px 32px rgba(123, 79, 255, 0.3);
+  --shadow-teal: 0 8px 24px rgba(0, 201, 177, 0.3);
+  --shadow-yellow: 0 4px 12px rgba(255, 214, 0, 0.4);
 }

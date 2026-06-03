@@ -1,53 +1,62 @@
-import { PageShell } from "@/components/PageShell";
 import Link from "next/link";
+import { Character } from "@/components/characters/Characters";
+import { PageShell } from "@/components/PageShell";
 import { MINI_GAMES, PLAY_ZONE_LABELS, PLAY_ZONE_ORDER } from "@/lib/games";
+import { GAME_CARD_COLORS, GAME_UI } from "@/lib/ui-catalog";
 
 export default function PlayPage() {
   return (
-    <PageShell className="!bg-[#fff8fc]">
-      <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-lime-300 via-emerald-200 to-pink-200 px-6 py-10 text-center shadow-lg sm:px-10">
-        <h1 className="font-display text-4xl font-extrabold text-white drop-shadow sm:text-5xl">
-          🎮 Arcade
-        </h1>
-        <p className="mx-auto mt-3 max-w-md text-lg font-semibold text-white/95">
-          Just for fun — tap, drag, trace, and paint. No lessons or quizzes here.
+    <PageShell>
+      <div
+        className="mx-4 mb-5 rounded-4xl p-5 text-center"
+        style={{
+          background: "linear-gradient(135deg, #2ECC71, #00C9B1)",
+          boxShadow: "0 8px 24px rgba(0,201,177,0.3)",
+        }}
+      >
+        <div className="mb-2 flex justify-center">
+          <Character id="bunny" size={72} animate />
+        </div>
+        <h1 className="font-display text-3xl text-white">Arcade</h1>
+        <p className="mx-auto mt-2 max-w-xs text-sm font-semibold text-white/90">
+          Tap, drag, trace, and paint — just for fun!
         </p>
       </div>
 
       {PLAY_ZONE_ORDER.map((zone) => {
         const games = MINI_GAMES.filter((g) => g.zone === zone);
         return (
-          <section key={zone} className="mt-10">
-            <h2 className="font-display text-xl font-bold text-violet-900">
+          <section key={zone} className="mb-8">
+            <h2 className="font-display px-5 text-lg text-brand-text">
               {PLAY_ZONE_LABELS[zone]}
             </h2>
-            <div className="mt-4 grid gap-6 sm:grid-cols-2">
-              {games.map((game) => (
-                <Link
-                  key={game.id}
-                  href={game.href}
-                  className="group overflow-hidden rounded-[2rem] bg-white shadow-lg ring-4 ring-white transition hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <div className="p-8 text-center">
-                    <span
-                      className="inline-block text-8xl transition group-hover:scale-110"
-                      aria-hidden
-                    >
-                      {game.emoji}
-                    </span>
-                    <p className="font-display mt-6 text-2xl font-extrabold text-violet-900">
+            <div className="mt-3 grid grid-cols-2 gap-3 px-4">
+              {games.map((game) => {
+                const ui = GAME_UI[game.id];
+                const colors = ui ? GAME_CARD_COLORS[ui.type] : GAME_CARD_COLORS.catch;
+                return (
+                  <Link
+                    key={game.id}
+                    href={game.href}
+                    className="relative overflow-hidden rounded-3xl p-4 text-left transition-transform active:scale-[0.97]"
+                    style={{ background: colors.bg, boxShadow: colors.shadow }}
+                  >
+                    <div className="absolute -right-5 -top-5 h-20 w-20 rounded-full bg-white/10" />
+                    {ui && (
+                      <Character id={ui.character} size={56} className="relative z-10 mb-2" />
+                    )}
+                    <p className="relative z-10 font-display text-base text-white">
                       {game.title}
                     </p>
-                    <p className="mt-3 text-violet-600">{game.description}</p>
-                    <p className="mt-4 inline-block rounded-full bg-violet-100 px-3 py-1 text-xs font-bold text-violet-700">
+                    <p className="relative z-10 mt-1 text-[10px] font-bold text-white/75">
                       {game.depth}
                     </p>
-                    <span className="mt-6 inline-flex rounded-full bg-gradient-to-r from-lime-400 to-pink-400 px-6 py-3 font-display font-bold text-white">
+                    <span className="relative z-10 mt-3 inline-block rounded-full bg-white/25 px-3 py-1 font-display text-xs font-bold text-white">
                       Play →
                     </span>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
             </div>
           </section>
         );

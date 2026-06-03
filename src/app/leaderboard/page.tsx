@@ -4,14 +4,12 @@ import { LeaderboardBoard } from "@/components/leaderboard/LeaderboardBoard";
 export default function LeaderboardPage() {
   return (
     <PageShell>
-      <h1 className="font-display text-3xl font-extrabold text-violet-900">
-        🏆 Leaderboard
-      </h1>
-      <p className="mt-2 max-w-2xl text-violet-700">
-        Finish Learn quizzes to earn XP, level up, and climb the ranks. Better scores mean
-        more points — perfect quizzes get a bonus!
-      </p>
-
+      <div className="px-5 pt-4">
+        <h1 className="font-display text-2xl text-brand-text">Leaderboard</h1>
+        <p className="mt-1 text-sm font-semibold text-brand-muted">
+          Finish Learn quizzes to earn XP and climb the ranks.
+        </p>
+      </div>
       <LeaderboardBoard />
     </PageShell>
   );

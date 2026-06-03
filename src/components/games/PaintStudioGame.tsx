@@ -148,7 +148,7 @@ export function PaintStudioGame() {
       ]}
       activeTab={room}
       onTabChange={(id) => setRoom(id as typeof room)}
-      buddy="🎨"
+      buddyCharacter="bunny"
       buddyLine={line}
       footer={
         <p className="text-center text-xs font-bold text-violet-600">

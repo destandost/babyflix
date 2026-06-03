@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { Character } from "@/components/characters/Characters";
 import { PageShell } from "@/components/PageShell";
+import { SUBJECT_UI } from "@/lib/ui-catalog";
 import {
   getLearnActivities,
   getLearningModule,
@@ -18,20 +20,27 @@ export function ModuleHub({ moduleId }: ModuleHubProps) {
   const activities = getLearnActivities(moduleId);
   const locked = getLockedLessons(moduleId);
   const quiz = getModuleQuiz(moduleId);
+  const ui = SUBJECT_UI[moduleId];
 
   return (
     <PageShell>
-      <Link href="/learn" className="text-sm font-semibold text-violet-600 hover:text-violet-800">
+      <Link
+        href="/learn"
+        className="mx-4 text-sm font-black text-brand-purple"
+      >
         ← Learn
       </Link>
 
       <div
-        className={`mt-4 rounded-3xl bg-gradient-to-br ${mod.color} p-6 text-white shadow-lg sm:p-8`}
+        className="relative mx-4 mt-4 overflow-hidden rounded-4xl p-6 text-white sm:p-8"
+        style={
+          ui
+            ? { background: ui.gradient, boxShadow: ui.shadow }
+            : undefined
+        }
       >
-        <span className="text-5xl" aria-hidden>
-          {mod.emoji}
-        </span>
-        <h1 className="font-display mt-3 text-3xl font-extrabold">{mod.title}</h1>
+        {ui && <Character id={ui.character} size={72} className="mb-3" />}
+        <h1 className="font-display text-3xl font-extrabold">{mod.title}</h1>
         <p className="mt-2 max-w-xl text-white/95">{mod.description}</p>
         <p className="mt-3 text-sm font-semibold text-white/80">
           {activities.length > 0

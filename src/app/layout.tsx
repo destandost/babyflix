@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fredoka, Nunito } from "next/font/google";
 import { CharacterDefs } from "@/components/characters/Characters";
+import { AppShell } from "@/components/layout/AppShell";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -30,7 +31,7 @@ export default function RootLayout({
     <html lang="en" className={`${nunito.variable} ${fredoka.variable} h-full`}>
       <body className="min-h-full antialiased">
         <CharacterDefs />
-        {children}
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

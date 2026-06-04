@@ -47,6 +47,11 @@ export function addXp(amount: number): number {
   return next;
 }
 
+/** Award XP after a game win (uses same storage as quizzes). */
+export function awardGameWin(xpAmount: number): number {
+  return addXp(xpAmount);
+}
+
 export function xpToLevel(xp: number): number {
   return Math.floor(xp / XP_PER_LEVEL) + 1;
 }

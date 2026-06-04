@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { FeatureCard } from "@/components/FeatureCard";
-import { Character } from "@/components/characters/Characters";
+import { Character, type CharacterId } from "@/components/characters/Characters";
 import { HomeHero } from "@/components/home/HomeHero";
 import { HomeLanguageBanner } from "@/components/language/HomeLanguageBanner";
 import { PageShell } from "@/components/PageShell";
 import { HOME_SECTIONS } from "@/lib/features";
-import { GAME_CARD_COLORS, GAME_UI, HOME_SECTION_UI, SHOW_CATALOG } from "@/lib/ui-catalog";
-import { MINI_GAMES } from "@/lib/games";
+import { HOME_SECTION_UI, SHOW_CATALOG } from "@/lib/ui-catalog";
+import { GAMES } from "@/lib/games";
 
 export default function HomePage() {
   return (
@@ -52,30 +52,24 @@ export default function HomePage() {
       </div>
 
       <div className="grid grid-cols-2 gap-3 px-4 pb-6">
-        {MINI_GAMES.map((game) => {
-          const ui = GAME_UI[game.id];
-          const colors = ui ? GAME_CARD_COLORS[ui.type] : GAME_CARD_COLORS.catch;
-          return (
-            <Link
-              key={game.id}
-              href={game.href}
-              className="relative overflow-hidden rounded-3xl p-4 text-left transition-transform active:scale-[0.97]"
-              style={{ background: colors.bg, boxShadow: colors.shadow }}
-            >
-              <div className="absolute -right-5 -top-5 h-20 w-20 rounded-full bg-white/10" />
-              {ui && <Character id={ui.character} size={56} className="relative z-10 mb-2.5" />}
-              <div className="relative z-10 font-display text-base text-white">{game.title}</div>
-              <div className="relative z-10 mt-0.5 text-[10px] font-bold text-white/75">
-                {game.vibe}
-              </div>
-              {ui && (
-                <div className="relative z-10 mt-2 text-[10px] font-black text-brand-yellow">
-                  🪙 +{ui.coins} per win
-                </div>
-              )}
-            </Link>
-          );
-        })}
+        {GAMES.slice(0, 4).map((game) => (
+          <Link
+            key={game.id}
+            href={game.route}
+            className="relative overflow-hidden rounded-3xl p-4 text-left transition-transform active:scale-[0.97]"
+            style={{ background: game.gradient, boxShadow: game.shadow }}
+          >
+            <div className="absolute -right-5 -top-5 h-20 w-20 rounded-full bg-white/10" />
+            <Character id={game.character as CharacterId} size={56} className="relative z-10 mb-2.5" />
+            <div className="relative z-10 font-display text-base text-white">{game.name}</div>
+            <div className="relative z-10 mt-0.5 text-[10px] font-bold text-white/75">
+              {game.description}
+            </div>
+            <div className="relative z-10 mt-2 text-[10px] font-black text-brand-yellow">
+              🪙 +{game.coins} per win
+            </div>
+          </Link>
+        ))}
       </div>
 
       <div className="mb-3 px-5">

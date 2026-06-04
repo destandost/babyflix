@@ -1,0 +1,55 @@
+import type { Lesson } from "../lessons-data";
+
+export const CODING_LESSONS: Lesson[] = [
+  {
+    id: "coding-loops-1",
+    subjectId: "coding",
+    ageGroup: "6-8",
+    title: "Loops",
+    description: "Repeating instructions",
+    coinsReward: 20,
+    xpReward: 25,
+    slides: [
+      { type: "intro", title: "Loops!", content: "A loop tells a computer to do the same thing again and again. Like a song on repeat!", character: "penguin", visual: "🔄" },
+      { type: "teach", title: "What is a loop?", content: 'Without loops you\'d have to write "blink eye" a million times. With a loop: repeat 1,000,000 times: blink!', character: "penguin", visual: "👁️", voiceText: "Imagine writing instructions for a video game. The player character breathes constantly. Without loops you'd write breathe, breathe, breathe... a million times. With a loop, just once!" },
+      { type: "teach", title: "While loops", content: 'A while loop keeps going WHILE a condition is true — like "while hungry, keep eating"!', character: "penguin", visual: "🍽️", voiceText: "A while loop is like saying while it is raining, keep your umbrella up. When the rain stops the loop stops!" },
+      { type: "funfact", title: "Fun Fact!", content: "Video game characters blink, breathe and idle using loops running thousands of times per second!", visual: "🎮", funFact: "Most video games run at 60 frames per second, meaning the game loop repeats 60 times every second to create smooth movement!" },
+      { type: "interact", title: "Spot the loop!", content: "Which of these is a loop?", options: ["Eat breakfast once", "Blink your eyes repeatedly", "Jump one time", "Stand completely still"], correct: 1 },
+      { type: "quiz", title: "Loop quiz!", content: "Seasons go Spring Summer Autumn Winter then start again. This is a...?", options: ["Sequence", "Bug", "Loop", "Variable"], correct: 2 },
+    ],
+  },
+  {
+    id: "coding-conditionals-1",
+    subjectId: "coding",
+    ageGroup: "6-8",
+    title: "If... Then...",
+    description: "Making decisions in code",
+    coinsReward: 20,
+    xpReward: 25,
+    slides: [
+      { type: "intro", title: "If... Then!", content: "Computers make decisions using IF... THEN statements. We do too!", character: "penguin", visual: "🤔" },
+      { type: "teach", title: "IF THEN logic", content: "IF it is raining THEN take an umbrella. IF you are hungry THEN eat food!", character: "penguin", visual: "☔", voiceText: "IF something is true, THEN do something. Every decision a computer makes uses this logic. IF the player touches a wall, THEN stop moving!" },
+      { type: "teach", title: "IF THEN ELSE", content: "IF hungry THEN eat. ELSE keep playing! The ELSE handles when the IF is false.", character: "penguin", visual: "🎮", voiceText: "Sometimes we need an ELSE. IF it's raining THEN use an umbrella. ELSE wear sunscreen! The ELSE handles both possibilities!" },
+      { type: "experiment", title: "Code your morning!", content: "Write IF THEN ELSE rules for your morning routine!", experiment: { title: "Morning Algorithm", materials: ["Paper", "Pencil"], steps: ["Write 5 IF THEN ELSE rules for your morning", "Example: IF it is cold THEN wear a jumper ELSE wear a t-shirt", "Can your rules cover every situation?", "Share with a grown-up and test the rules!"] } },
+      { type: "quiz", title: "Conditionals quiz!", content: "Complete this: IF the light is green THEN...?", options: ["Stop", "Wait", "Walk", "Turn around"], correct: 2 },
+    ],
+  },
+  {
+    id: "coding-sequences-expanded-1",
+    subjectId: "coding",
+    ageGroup: "4-6",
+    title: "Sequences in Daily Life",
+    description: "Steps in the right order",
+    coinsReward: 20,
+    xpReward: 25,
+    slides: [
+      { type: "intro", title: "Sequences!", content: "A sequence is a set of steps in the RIGHT order. Get the order wrong and things go funny!", character: "penguin", visual: "💻" },
+      { type: "teach", title: "Order matters!", content: "Putting on shoes THEN socks doesn't work. It must be socks THEN shoes!", character: "penguin", visual: "🧦👟", voiceText: "Imagine putting your shoes on before your socks! That's what happens when a sequence is in the wrong order. Order matters in coding!" },
+      { type: "story", title: "Penguin codes a rocket", content: "Penguin must launch a rocket. Step 1: add fuel. Step 2: countdown. Step 3: BLAST OFF! Get it wrong and... nothing happens!", character: "penguin", visual: "🚀", voiceText: "Penguin wants to launch a rocket but the computer needs exact instructions in the right order. What happens if Penguin skips the fuel?" },
+      { type: "experiment", title: "Sequence yourself!", content: "Write the steps to make a jam sandwich in order. Did you remember to open the jam first?", experiment: { title: "Algorithm Sandwich", materials: ["Paper", "Pencil"], steps: ["Write ALL the steps to make a sandwich", "Number them in order", "Read them to a grown-up — are they in the right order?", "Did you include EVERY step? Even getting the plate?"] } },
+      { type: "funfact", title: "Fun Fact!", content: "The first computer programmer was a woman called Ada Lovelace — in the 1840s, 100 years before computers existed!", visual: "👩‍💻", funFact: "Ada Lovelace wrote an algorithm for Charles Babbage's Analytical Engine in 1843. She is considered the world's first computer programmer!" },
+      { type: "interact", title: "Fix the sequence!", content: "To brush teeth, what comes FIRST?", options: ["Spit out toothpaste", "Put toothpaste on brush", "Brush teeth", "Rinse mouth"], correct: 1 },
+      { type: "quiz", title: "Sequence quiz!", content: "In coding, a sequence is...?", options: ["A random list", "Steps in any order", "Steps in the right order", "A type of number"], correct: 2 },
+    ],
+  },
+];

@@ -5,6 +5,22 @@ export const DUOLINGO_PROSODY = {
   pitch: "+0Hz",
 } as const;
 
+/** Arcade games — faster, brighter, more celebratory than Learn. */
+export const GAME_PROSODY = {
+  rate: "+24%",
+  volume: "+10%",
+  pitch: "+16Hz",
+} as const;
+
+export type TtsDelivery = "learn" | "game";
+
+export function getTtsProsody(delivery: TtsDelivery = "learn") {
+  return delivery === "game" ? GAME_PROSODY : DUOLINGO_PROSODY;
+}
+
+/** Slightly more expressive voice for mini-games (Learn keeps Jenny). */
+export const GAME_EDGE_VOICE = "en-US-AriaNeural";
+
 /**
  * Friendly neural voices per babyflix language (female/clear, similar to language apps).
  * @see https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support

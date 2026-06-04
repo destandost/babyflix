@@ -108,28 +108,6 @@ export const SUBJECT_UI: Record<
   },
 };
 
-export type GameVisualType = "drag" | "match" | "trace" | "catch";
-
-export const GAME_UI: Record<
-  string,
-  { character: CharacterId; type: GameVisualType; coins: number }
-> = {
-  "bubble-catch": { character: "fish", type: "catch", coins: 5 },
-  "trace-trail": { character: "dino", type: "trace", coins: 8 },
-  "frog-pond": { character: "dragon", type: "catch", coins: 6 },
-  "paint-studio": { character: "bunny", type: "match", coins: 10 },
-};
-
-export const GAME_CARD_COLORS: Record<
-  GameVisualType,
-  { bg: string; shadow: string }
-> = {
-  drag: { bg: "linear-gradient(135deg, #FF4D8D, #FF8CC8)", shadow: "0 6px 20px rgba(255,77,141,0.3)" },
-  match: { bg: "linear-gradient(135deg, #7B4FFF, #A87BFF)", shadow: "0 6px 20px rgba(123,79,255,0.3)" },
-  trace: { bg: "linear-gradient(135deg, #00C9B1, #00E8D0)", shadow: "0 6px 20px rgba(0,201,177,0.3)" },
-  catch: { bg: "linear-gradient(135deg, #FF6B4A, #FF9A80)", shadow: "0 6px 20px rgba(255,107,74,0.3)" },
-};
-
 export const EMOJI_TO_CHARACTER: Record<string, CharacterId> = {
   "🦊": "fox",
   "🐻": "bear",

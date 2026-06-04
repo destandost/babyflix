@@ -1,4 +1,4 @@
-import { getEdgeVoice, hasEdgeVoice } from "./edge-voices";
+import { getEdgeVoice, hasEdgeVoice, type TtsDelivery } from "./edge-voices";
 
 /** Browser fallback only when Edge TTS is unavailable */
 export const SPEECH_LOCALES: Record<string, string> = {
@@ -35,6 +35,7 @@ export const SPEECH_LOCALES: Record<string, string> = {
 };
 
 const SPEECH_FALLBACK = { rate: 0.92, pitch: 1.0 } as const;
+const GAME_SPEECH_FALLBACK = { rate: 1.1, pitch: 1.14 } as const;
 
 let activeAudio: HTMLAudioElement | null = null;
 const audioUrlCache = new Map<string, string>();
@@ -102,10 +103,14 @@ async function speakViaStaticPhrase(
   return playAudioUrl(staticPhraseUrl(languageId, phraseId));
 }
 
-async function speakViaEdgeTts(text: string, languageId: string): Promise<boolean> {
+async function speakViaEdgeTts(
+  text: string,
+  languageId: string,
+  delivery: TtsDelivery = "learn",
+): Promise<boolean> {
   if (!hasEdgeVoice(languageId)) return false;
 
-  const cacheKey = `${languageId}:${text}`;
+  const cacheKey = `${languageId}:${delivery}:${text}`;
   let url = audioUrlCache.get(cacheKey);
 
   if (!url) {
@@ -113,6 +118,7 @@ async function speakViaEdgeTts(text: string, languageId: string): Promise<boolea
       const params = new URLSearchParams({
         lang: languageId,
         text,
+        mode: delivery,
       });
       const res = await fetch(`/api/tts?${params}`);
       if (!res.ok) return false;
@@ -150,19 +156,24 @@ function pickFallbackVoice(
   );
 }
 
-function speakTextFallback(text: string, languageId: string): void {
+function speakTextFallback(
+  text: string,
+  languageId: string,
+  delivery: TtsDelivery = "learn",
+): void {
   if (typeof window === "undefined" || !("speechSynthesis" in window) || !text.trim()) {
     return;
   }
 
   const locale = SPEECH_LOCALES[languageId] ?? "en-US";
+  const tone = delivery === "game" ? GAME_SPEECH_FALLBACK : SPEECH_FALLBACK;
 
   const run = () => {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text.trim());
     utterance.lang = locale;
-    utterance.rate = SPEECH_FALLBACK.rate;
-    utterance.pitch = SPEECH_FALLBACK.pitch;
+    utterance.rate = tone.rate;
+    utterance.pitch = tone.pitch;
     const voice = pickFallbackVoice(locale, window.speechSynthesis.getVoices());
     if (voice) utterance.voice = voice;
     window.speechSynthesis.speak(utterance);
@@ -187,18 +198,27 @@ export async function speakPhrase(
   text: string,
   languageId: string,
   phraseId?: string,
+  delivery: TtsDelivery = "learn",
 ): Promise<void> {
   if (!canSpeak() || !text.trim()) return;
 
-  if (phraseId) {
+  if (phraseId && delivery === "learn") {
     const fromStatic = await speakViaStaticPhrase(languageId, phraseId);
     if (fromStatic) return;
   }
 
-  const played = await speakViaEdgeTts(text, languageId);
+  const played = await speakViaEdgeTts(text, languageId, delivery);
   if (played) return;
 
-  speakTextFallback(text, languageId);
+  speakTextFallback(text, languageId, delivery);
+}
+
+/** Punch up short game lines for kid-friendly delivery (skip single-letter phonics). */
+export function energizeGameText(text: string): string {
+  const t = text.trim();
+  if (!t || t.length === 1) return t;
+  if (/[!?.]$/.test(t)) return t;
+  return `${t}!`;
 }
 
 export function speakText(text: string, languageId: string): void {
@@ -218,5 +238,5 @@ export function usesNeuralTts(languageId: string): boolean {
 export const GAME_SPEECH_LANG = "en";
 
 export function speakGame(text: string): Promise<void> {
-  return speakPhrase(text, GAME_SPEECH_LANG);
+  return speakPhrase(energizeGameText(text), GAME_SPEECH_LANG, undefined, "game");
 }

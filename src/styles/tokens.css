@@ -1,0 +1,137 @@
+:root {
+  /* Fixed tab bar: 3.75rem row + safe area + small buffer */
+  --app-tab-bar-height: calc(3.75rem + max(0.5rem, env(safe-area-inset-bottom)) + 0.75rem);
+  --pink: #ff4d8d;
+  --coral: #ff6b4a;
+  --yellow: #ffd600;
+  --teal: #00c9b1;
+  --purple: #7b4fff;
+  --cyan: #00d4ff;
+  --green: #2ecc71;
+  --white: #ffffff;
+  --off: #f7f7ff;
+  --text: #2d2d44;
+  --muted: #8888aa;
+  --border: #f0f0f8;
+  --font-display: var(--font-fredoka), "Fredoka", cursive;
+  --font-body: var(--font-nunito), "Nunito", sans-serif;
+  --radius-sm: 16px;
+  --radius-md: 22px;
+  --radius-lg: 28px;
+  --shadow-pink: 0 6px 20px rgba(255, 77, 141, 0.3);
+  --shadow-purple: 0 8px 32px rgba(123, 79, 255, 0.3);
+  --shadow-teal: 0 8px 24px rgba(0, 201, 177, 0.3);
+  --shadow-yellow: 0 4px 12px rgba(255, 214, 0, 0.4);
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--off);
+  color: var(--text);
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes confettiFall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-pop {
+  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-6px);
+  }
+  80% {
+    transform: translateX(6px);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff4d8d, #7b4fff);
+  border-radius: 20px;
+  padding: 16px 24px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: white;
+  border: none;
+  box-shadow: var(--shadow-purple);
+  transition: transform 0.15s;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.coin-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: var(--yellow);
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  font-weight: 900;
+  color: #92400e;
+  box-shadow: var(--shadow-yellow);
+}

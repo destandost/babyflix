@@ -5,6 +5,7 @@ import { MOCK_LEADERBOARD } from "@/lib/features";
 export default function LeaderboardPage() {
   return (
     <PageShell>
+<<<<<<< Updated upstream
       <h1 className="font-display text-3xl font-extrabold text-violet-900">
         🏆 Leaderboard
       </h1>
@@ -46,6 +47,15 @@ export default function LeaderboardPage() {
           </li>
         ))}
       </ol>
+=======
+      <div className="px-5 pt-4">
+        <h1 className="font-display text-2xl text-brand-text">Leaderboard</h1>
+        <p className="mt-1 text-sm font-semibold text-brand-muted">
+          Earn XP from quizzes and games and see how you rank this week!
+        </p>
+      </div>
+      <LeaderboardBoard />
+>>>>>>> Stashed changes
     </PageShell>
   );
 }

@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
 import { Fredoka, Nunito } from "next/font/google";
+<<<<<<< Updated upstream
+=======
+import { CharacterDefs } from "@/components/characters/Characters";
+import { AppShell } from "@/components/layout/AppShell";
+import { ChildProfileGate } from "@/components/onboarding/ChildProfileGate";
+>>>>>>> Stashed changes
 import "./globals.css";
 
 const nunito = Nunito({
@@ -27,7 +33,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${nunito.variable} ${fredoka.variable} h-full`}>
+<<<<<<< Updated upstream
       <body className="min-h-full antialiased">{children}</body>
+=======
+      <body className="min-h-full antialiased">
+        <CharacterDefs />
+        <AppShell>
+          <ChildProfileGate>{children}</ChildProfileGate>
+        </AppShell>
+      </body>
+>>>>>>> Stashed changes
     </html>
   );
 }

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { PageShell } from "@/components/PageShell";
 import { PlaceholderBanner } from "@/components/PlaceholderBanner";
 import { MOCK_PARENT_REPORT } from "@/lib/features";
@@ -7,6 +8,7 @@ export default function ParentsPage() {
 
   return (
     <PageShell>
+<<<<<<< Updated upstream
       <h1 className="font-display text-3xl font-extrabold text-slate-800">
         👨‍👩‍👧 Parent information
       </h1>
@@ -14,6 +16,34 @@ export default function ParentsPage() {
         Çocukların progress&apos;iyle ilgili aileye rapor — progress reports and
         dialogue for families.
       </p>
+=======
+      <div
+        className="mx-4 mb-5 rounded-4xl p-5"
+        style={{
+          background: "linear-gradient(135deg, #00D4FF, #7B4FFF)",
+          boxShadow: "0 8px 32px rgba(123,79,255,0.3)",
+        }}
+      >
+        <h1 className="font-display mb-1 text-2xl text-white">Parent Dashboard</h1>
+        <p className="text-sm font-semibold text-white/85">
+          Progress reports for families
+        </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Link
+            href="/shop"
+            className="inline-block rounded-full bg-brand-yellow px-4 py-2 text-xs font-black text-brand-text"
+          >
+            Coin shop
+          </Link>
+          <Link
+            href="/welcome?edit=1"
+            className="inline-block rounded-full bg-white/25 px-4 py-2 text-xs font-black text-white"
+          >
+            Child&apos;s age
+          </Link>
+        </div>
+      </div>
+>>>>>>> Stashed changes
 
       <PlaceholderBanner
         title="Parent dialogue (coming soon)"

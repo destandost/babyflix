@@ -72,7 +72,7 @@ export const HOME_SECTIONS = [
   {
     href: "/leaderboard",
     title: "Leaderboard",
-    description: "See how kids compare by level and XP.",
+    description: "Climb the ranks with XP from quizzes and games.",
     emoji: "🏆",
     color: "from-yellow-400 to-amber-500",
   },
@@ -84,14 +84,6 @@ export const HOME_SECTIONS = [
     color: "from-slate-500 to-slate-700",
   },
 ] as const;
-
-export const MOCK_LEADERBOARD = [
-  { rank: 1, name: "Luna", level: 12, xp: 2840, emoji: "🦊" },
-  { rank: 2, name: "Milo", level: 11, xp: 2510, emoji: "🐻" },
-  { rank: 3, name: "Zara", level: 10, xp: 2200, emoji: "🐰" },
-  { rank: 4, name: "Kai", level: 9, xp: 1980, emoji: "🦁" },
-  { rank: 5, name: "Nia", level: 8, xp: 1750, emoji: "🐼" },
-];
 
 export const MOCK_PARENT_REPORT = {
   childName: "Your child",
